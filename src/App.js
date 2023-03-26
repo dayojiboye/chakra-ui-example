@@ -1,3 +1,4 @@
+import Customer from "components/Customer";
 import FinancialServices from "components/FinancialServices";
 import HeroSection from "components/HeroSection";
 import MedicalServices from "components/MedicalServices";
@@ -11,6 +12,7 @@ export default function App() {
 			<SecuritySection />
 			<FinancialServices />
 			<MedicalServices />
+			<Customer />
 		</Layout>
 	);
 }
