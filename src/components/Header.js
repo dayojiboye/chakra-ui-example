@@ -7,7 +7,7 @@ const Nav = styled(Box)`
 	@media (max-width: 639px) {
 		position: fixed;
 		top: 0;
-		right: ${(props) => (props.show ? 0 : "-100%")};
+		right: ${(props) => (props.open ? 0 : "-100%")};
 		z-index: 200;
 		background-color: rgba(18, 61, 138);
 		width: 100%;
@@ -36,18 +36,18 @@ const Hamburger = styled(Box)`
 		transition: all 0.4s ease-in-out;
 	}
 	#bar1 {
-		transform: ${(props) => (props.show ? "rotate(-45deg) translate(-4px, 6px)" : "none")};
+		transform: ${(props) => (props.open ? "rotate(-45deg) translate(-4px, 6px)" : "none")};
 		background-color: ${(props) =>
-			props.show ? props.theme.colors.white : props.theme.colors.blue};
+			props.open ? props.theme.colors.white : props.theme.colors.blue};
 	}
 	#bar2 {
-		opacity: ${(props) => (props.show ? 0 : 1)};
+		opacity: ${(props) => (props.open ? 0 : 1)};
 		background-color: ${(props) => props.theme.colors.blue};
 	}
 	#bar3 {
-		transform: ${(props) => (props.show ? "rotate(45deg) translate(-5px, -8px)" : "none")};
+		transform: ${(props) => (props.open ? "rotate(45deg) translate(-5px, -8px)" : "none")};
 		background-color: ${(props) =>
-			props.show ? props.theme.colors.white : props.theme.colors.blue};
+			props.open ? props.theme.colors.white : props.theme.colors.blue};
 	}
 `;
 
@@ -90,7 +90,7 @@ export default function Header() {
 					alignItems={["flex-start", "center"]}
 					gap={["48px 0px", "0px 35px"]}
 					p={["84px 35px 60px", "0px"]}
-					show={openSideBar}
+					open={openSideBar}
 				>
 					<NavLink
 						as="a"
@@ -130,7 +130,7 @@ export default function Header() {
 
 				<Hamburger
 					role="button"
-					show={openSideBar}
+					open={openSideBar}
 					display={["block", "none"]}
 					onClick={() => {
 						setOpenSideBar(!openSideBar);
