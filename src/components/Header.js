@@ -3,11 +3,11 @@ import styled from "@emotion/styled";
 import React from "react";
 import Wrapper from "./Wrapper";
 
-const Nav = styled(Box)`
+const Nav = styled.nav`
 	@media (max-width: 639px) {
 		position: fixed;
 		top: 0;
-		right: ${(props) => (props.open ? 0 : "-100%")};
+		right: ${(props) => (props.show ? 0 : "-100%")};
 		z-index: 200;
 		background-color: rgba(18, 61, 138);
 		width: 100%;
@@ -24,7 +24,7 @@ const NavLink = styled(Text)`
 	}
 `;
 
-const Hamburger = styled(Box)`
+const Hamburger = styled.div`
 	position: relative;
 	z-index: 250;
 	#bar1,
@@ -36,18 +36,18 @@ const Hamburger = styled(Box)`
 		transition: all 0.4s ease-in-out;
 	}
 	#bar1 {
-		transform: ${(props) => (props.open ? "rotate(-45deg) translate(-4px, 6px)" : "none")};
+		transform: ${(props) => (props.show ? "rotate(-45deg) translate(-4px, 6px)" : "none")};
 		background-color: ${(props) =>
-			props.open ? props.theme.colors.white : props.theme.colors.blue};
+			props.show ? props.theme.colors.white : props.theme.colors.blue};
 	}
 	#bar2 {
-		opacity: ${(props) => (props.open ? 0 : 1)};
+		opacity: ${(props) => (props.show ? 0 : 1)};
 		background-color: ${(props) => props.theme.colors.blue};
 	}
 	#bar3 {
-		transform: ${(props) => (props.open ? "rotate(45deg) translate(-5px, -8px)" : "none")};
+		transform: ${(props) => (props.show ? "rotate(45deg) translate(-5px, -8px)" : "none")};
 		background-color: ${(props) =>
-			props.open ? props.theme.colors.white : props.theme.colors.blue};
+			props.show ? props.theme.colors.white : props.theme.colors.blue};
 	}
 `;
 
@@ -83,14 +83,14 @@ export default function Header() {
 					LOGO
 				</Text>
 
-				<Nav
-					as="nav"
+				<Box
+					as={Nav}
 					display="flex"
 					flexDirection={["column", "row"]}
 					alignItems={["flex-start", "center"]}
 					gap={["48px 0px", "0px 35px"]}
 					p={["84px 35px 60px", "0px"]}
-					open={openSideBar}
+					show={openSideBar}
 				>
 					<NavLink
 						as="a"
@@ -126,11 +126,12 @@ export default function Header() {
 					>
 						Create a Free Account
 					</Button>
-				</Nav>
+				</Box>
 
-				<Hamburger
+				<Box
+					as={Hamburger}
 					role="button"
-					open={openSideBar}
+					show={openSideBar}
 					display={["block", "none"]}
 					onClick={() => {
 						setOpenSideBar(!openSideBar);
@@ -141,7 +142,7 @@ export default function Header() {
 					<Box id="bar1"></Box>
 					<Box id="bar2"></Box>
 					<Box id="bar3"></Box>
-				</Hamburger>
+				</Box>
 			</Wrapper>
 		</Box>
 	);

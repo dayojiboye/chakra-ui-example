@@ -23,6 +23,7 @@ const theme = extendTheme({
 				justifyContent: "center",
 				borderRadius: "5px",
 				transition: "none",
+				whiteSpace: "wrap",
 			},
 			variants: {
 				primary: {
